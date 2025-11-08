@@ -1,10 +1,7 @@
 # 📸 Gallery Media Picker - Flutter Package
 
-[![Author](https://img.shields.io/badge/Author-camilo1498-blue)](https://github.com/camilo1498)
-![Pub Version](https://img.shields.io/pub/v/gallery_media_picker)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 ![Platform](https://img.shields.io/badge/platform-Flutter-blue)
-[![GitHub stars](https://img.shields.io/github/stars/camilo1498/gallery_media_picker?style=social)](https://github.com/camilo1498/gallery_media_picker/stargazers)
 
 
 A powerful and customizable Flutter package for selecting images and videos from the device gallery with an Instagram style interface and fast thumbnail rendering. Built on top of photo_manager, this package delivers smooth performance, flexible UI customization, and a clean user experience.
@@ -39,7 +36,7 @@ Your support helps improve and maintain this project! ❤️
 
 ```yaml
 dependencies:
-  gallery_media_picker: ^<latest_version>
+  gallery_media_picker_plus: ^<latest_version>
 ````
 
 ---
