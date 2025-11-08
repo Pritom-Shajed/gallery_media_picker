@@ -7,18 +7,16 @@
 [![GitHub stars](https://img.shields.io/github/stars/camilo1498/gallery_media_picker?style=social)](https://github.com/camilo1498/gallery_media_picker/stargazers)
 
 
+A powerful and customizable Flutter package for selecting images and videos from the device gallery with an Instagram style interface and fast thumbnail rendering. Built on top of photo_manager, this package delivers smooth performance, flexible UI customization, and a clean user experience.
 
-A powerful and customizable Flutter package that allows users to select multiple media files (images or videos) directly from the device's gallery, featuring an Instagram-style interface and performance-optimized thumbnail rendering.
-
-Built on top of [`photo_manager`](https://pub.dev/packages/photo_manager), `gallery_media_picker` is ideal for apps requiring fast media access, beautiful UX, and fine-grained configuration.
-
-Claro, aquí tienes un mensaje corto y amigable que puedes usar para invitar a las personas a apoyar el proyecto en GitHub y pub.dev, junto con los **badges** correspondientes:
+This work is an improved fork of the original [`gallery_media_picker`](https://pub.dev/packages/gallery_media_picker) created by Camilo. Built on top of [`photo_manager`](https://pub.dev/packages/photo_manager).
+The Plus version adds bug fixes, quality improvements, usability enhancements, and more flexible control.
 
 ---
 
 ## 💫 Support the Project
 
-If you find this package helpful, please consider giving it a ⭐ on [GitHub](https://github.com/camilo1498/gallery_media_picker) and liking it on [pub.dev](https://pub.dev/packages/gallery_media_picker)!
+If you find this package helpful, please consider giving it a ⭐ on [GitHub](https://github.com/Pritom-Shajed/gallery_media_picker) and liking it on [pub.dev](https://pub.dev/packages/gallery_media_picker_plus)!
 
 Your support helps improve and maintain this project! ❤️
 
@@ -100,7 +98,6 @@ Future<void> requestPermissions() async {
 GalleryMediaPicker(
   pathList: (List<PickedAssetModel> paths) {
     // Handle selected media
-    media.setPickedFiles(paths);
   },
   appBarLeadingWidget: Icon(Icons.close),
   mediaPickerParams: MediaPickerParamsModel(
@@ -155,31 +152,34 @@ Use this to insert a custom control like a back button, close icon, or any widge
 Each parameter lets you fine-tune the look and feel of the media picker.
 
 | Parameter                | Description                                  | Type               | Default                   |
-|--------------------------|----------------------------------------------|--------------------|---------------------------|
-| `appBarHeight`           | Height of the top AppBar                     | `double`           | `50.0`                    |
-| `appBarColor`            | Background color of the AppBar               | `Color`            | `Colors.black`            |
-| `albumTextColor`         | Text color of the selected album             | `Color`            | `Colors.white`            |
-| `albumDropDownBgColor`   | Background color of album dropdown           | `Color`            | `Colors.green`            |
-| `albumSelectIconColor`   | Icon color in dropdown                       | `Color`            | `Colors.blue`             |
-| `albumSelectTextColor`   | Text color in dropdown list                  | `Color`            | `Colors.orange`           |
-| `selectedAlbumTextColor` | Color of selected album title                | `Color`            | `Colors.white`            |
-| `selectedAlbumIcon`      | Icon shown when album is selected            | `IconData`         | `Icons.check`             |
-| `selectedAlbumBgColor`   | Background of selected album                 | `Color`            | `Colors.black`            |
-| `selectedAssetBgColor`   | Background color for selected media          | `Color`            | `Colors.orange`           |
-| `selectedCheckColor`     | Checkmark color for selected assets          | `Color`            | `Colors.black`            |
-| `selectedCheckBgColor`   | Checkmark background circle color            | `Color`            | `Colors.blue`             |
-| `gridViewBgColor`        | GridView background color                    | `Color`            | `Colors.red`              |
-| `gridPadding`            | Grid padding                                 | `EdgeInsets`       | `EdgeInsets.zero`         |
-| `crossAxisCount`         | Number of columns                            | `int`              | `3`                       |
-| `childAspectRatio`       | Ratio of width to height                     | `double`           | `.5`                      |
-| `thumbnailBoxFix`        | Fit mode for thumbnails                      | `BoxFit`           | `BoxFit.cover`            |
-| `thumbnailBgColor`       | Thumbnail container color                    | `Color`            | `Colors.cyan`             |
-| `thumbnailQuality`       | Enum for quality: `low`, `medium`, `high`    | `ThumbnailQuality` | `ThumbnailQuality.medium` |
-| `gridViewController`     | ScrollController for the GridView            | `ScrollController` | `ScrollController()`      |
-| `gridViewPhysics`        | Scroll behavior                              | `ScrollPhysics`    | `BouncingScrollPhysics()` |
-| `maxPickImages`          | Max number of assets to select               | `int`              | `5`                       |
-| `singlePick`             | Whether only one image can be picked         | `bool`             | `false`                   |
-| `mediaType`              | Type of media to display (all/images/videos) | `GalleryMediaType` | `GalleryMediaType.all`    |
+|--------------------------|----------------------------------------------|--------------------|------------------------------|
+| `appBarHeight`           | Height of the top AppBar                     | `double`           | `50.0`                       |
+| `appBarColor`            | Background color of the AppBar               | `Color`            | `Colors.black`               |
+| `albumTextColor`         | Text color of the selected album             | `Color`            | `Colors.white`               |
+| `albumDropDownBgColor`   | Background color of album dropdown           | `Color`            | `Colors.green`               |
+| `albumSelectIconColor`   | Icon color in dropdown                       | `Color`            | `Colors.blue`                |
+| `albumSelectTextColor`   | Text color in dropdown list                  | `Color`            | `Colors.orange`              |
+| `selectedAlbumTextColor` | Color of selected album title                | `Color`            | `Colors.white`               |
+| `selectedAlbumIcon`      | Icon shown when album is selected            | `IconData`         | `Icons.check`                |
+| `selectedAlbumBgColor`   | Background of selected album                 | `Color`            | `Colors.black`               |
+| `selectedAssetBgColor`   | Background color for selected media          | `Color`            | `Colors.orange`              |
+| `selectedCheckColor`     | Checkmark color for selected assets          | `Color`            | `Colors.black`               |
+| `selectedCheckBgColor`   | Checkmark background circle color            | `Color`            | `Colors.blue`                |
+| `gridViewBgColor`        | GridView background color                    | `Color`            | `Colors.red`                 |
+| `gridPadding`            | Grid padding                                 | `EdgeInsets`       | `EdgeInsets.zero`            |
+| `crossAxisCount`         | Number of columns                            | `int`              | `3`                          |
+| `childAspectRatio`       | Ratio of width to height                     | `double`           | `.5`                         |
+| `thumbnailBoxFix`        | Fit mode for thumbnails                      | `BoxFit`           | `BoxFit.cover`               |
+| `thumbnailBgColor`       | Thumbnail container color                    | `Color`            | `Colors.cyan`                |
+| `thumbnailQuality`       | Enum for quality: `low`, `medium`, `high`    | `ThumbnailQuality` | `ThumbnailQuality.medium`    |
+| `gridViewController`     | ScrollController for the GridView            | `ScrollController` | `ScrollController()`         |
+| `gridViewPhysics`        | Scroll behavior                              | `ScrollPhysics`    | `BouncingScrollPhysics()`    |
+| `maxPickImages`          | Max number of assets to select               | `int`              | `5`                          |
+| `singlePick`             | Whether only one image can be picked         | `bool`             | `false`                      |
+| `mediaType`              | Type of media to display (all/images/videos) | `GalleryMediaType` | `GalleryMediaType.all`       |
+| `loadingIndicatorWidget` | Custom widget to show while media is loading | `Widget`           | `CircularProgressIndicator()`|
+| `emptyAssetText`         | Widget displayed when an album has no media  | `Widget`           | `Text('No media found')`     |
+
 
 ## 🧠 Enum: ThumbnailQuality
 
@@ -272,7 +272,7 @@ Each parameter lets you fine-tune the look and feel of the media picker.
 
 ## 💬 Contributing
 
-Pull requests are welcome! If you find bugs or have suggestions, feel free to open an issue.
+Contributions are welcome. If you find bugs or have feature suggestions, feel free to open an issue or submit a pull request in this repository.
 
 ---
 

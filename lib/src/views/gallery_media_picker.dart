@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:gallery_media_picker/gallery_media_picker.dart';
-import 'package:gallery_media_picker/src/logic/gallery_media_picker_controller.dart';
-import 'package:gallery_media_picker/src/views/widgets/animated_tap_widget.dart';
-import 'package:gallery_media_picker/src/views/widgets/gridview/grid_thumbnail_item_widget.dart';
+import 'package:gallery_media_picker_plus/gallery_media_picker.dart';
+import 'package:gallery_media_picker_plus/src/logic/gallery_media_picker_controller.dart';
+import 'package:gallery_media_picker_plus/src/views/widgets/animated_tap_widget.dart';
+import 'package:gallery_media_picker_plus/src/views/widgets/gridview/grid_thumbnail_item_widget.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:photo_manager/photo_manager.dart';
 

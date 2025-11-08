@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gallery_media_picker/gallery_media_picker.dart';
-import 'package:gallery_media_picker/src/core/decode_image.dart';
-import 'package:gallery_media_picker/src/core/utils.dart';
+import 'package:gallery_media_picker_plus/gallery_media_picker.dart';
+import 'package:gallery_media_picker_plus/src/core/decode_image.dart';
+import 'package:gallery_media_picker_plus/src/core/utils.dart';
 import 'package:photo_manager/photo_manager.dart';
 
 /// A widget that displays a thumbnail of a media [AssetEntity]

@@ -21,9 +21,9 @@ class AnimatedTapWidget extends StatefulWidget {
     this.onTap,
     this.maxScale = 0.98,
   }) : assert(
-         maxScale >= 0.1 && maxScale <= 1.0,
-         'Error: The variable maxScale must be between 0.1 and 1.0',
-       );
+          maxScale >= 0.1 && maxScale <= 1.0,
+          'Error: The variable maxScale must be between 0.1 and 1.0',
+        );
 
   /// The widget that will be scaled on tap.
   final Widget child;
@@ -62,10 +62,10 @@ class _AnimatedTapWidgetState extends State<AnimatedTapWidget>
       value: 1,
       duration: const Duration(milliseconds: 10),
     )..addListener(() {
-      setState(() {
-        squareScaleA = _controllerA.value;
+        setState(() {
+          squareScaleA = _controllerA.value;
+        });
       });
-    });
 
     // Initialize controller B (unused for scale but
     // maintained for legacy or symmetry).
@@ -74,10 +74,10 @@ class _AnimatedTapWidgetState extends State<AnimatedTapWidget>
       value: 1,
       duration: const Duration(milliseconds: 10),
     )..addListener(() {
-      setState(() {
-        squareScaleB = _controllerB.value;
+        setState(() {
+          squareScaleB = _controllerB.value;
+        });
       });
-    });
 
     // Initialize a dummy timer to avoid null references.
     _timer = Timer(const Duration(milliseconds: 300), () {});
@@ -95,15 +95,14 @@ class _AnimatedTapWidgetState extends State<AnimatedTapWidget>
   Widget build(BuildContext context) {
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
-      onTap:
-          widget.onTap != null
-              ? () {
-                HapticFeedback.lightImpact();
-                _controllerA.reverse();
-                _controllerB.reverse();
-                widget.onTap!();
-              }
-              : () {},
+      onTap: widget.onTap != null
+          ? () {
+              HapticFeedback.lightImpact();
+              _controllerA.reverse();
+              _controllerB.reverse();
+              widget.onTap!();
+            }
+          : () {},
       onTapDown: (dp) {
         _controllerA.reverse();
         _controllerB.reverse();

@@ -30,7 +30,8 @@ class _GalleryGridViewWidgetState extends State<_GalleryGridViewWidget> {
   void initState() {
     super.initState();
 
-    _scrollController = provider.paramsModel.gridViewController ?? ScrollController();
+    _scrollController =
+        provider.paramsModel.gridViewController ?? ScrollController();
 
     // Attach scroll listener to trigger preloading when nearing the bottom.
     _scrollController
@@ -90,7 +91,9 @@ class _GalleryGridViewWidgetState extends State<_GalleryGridViewWidget> {
 
   // Preloads a range of assets from [start] to [end] (exclusive).
   Future<void> _preloadAssets(int start, int end) async {
-    if (_isLoading || provider.album == null || start >= provider.assetCount.value) {
+    if (_isLoading ||
+        provider.album == null ||
+        start >= provider.assetCount.value) {
       return;
     }
     _isLoading = true;
@@ -116,7 +119,8 @@ class _GalleryGridViewWidgetState extends State<_GalleryGridViewWidget> {
           builder: (_, isLoading, __) {
             if (isLoading) {
               if (provider.paramsModel.loadingIndicatorWidget != null) {
-                return Center(child: provider.paramsModel.loadingIndicatorWidget);
+                return Center(
+                    child: provider.paramsModel.loadingIndicatorWidget);
               }
               return const Center(child: CircularProgressIndicator());
             }
@@ -127,7 +131,9 @@ class _GalleryGridViewWidgetState extends State<_GalleryGridViewWidget> {
                 if (album == null || provider.assetCount.value == 0) {
                   return Center(
                       child: provider.paramsModel.emptyAssetText ??
-                          const Text('No media found.', style: TextStyle(fontSize: 14, color: Colors.white)));
+                          const Text('No media found.',
+                              style: TextStyle(
+                                  fontSize: 14, color: Colors.white)));
                 }
 
                 // Build a scrollable grid of media thumbnails.
@@ -164,8 +170,9 @@ class _GalleryGridViewWidgetState extends State<_GalleryGridViewWidget> {
     // Fallback to async load if not already cached.
     return FutureBuilder<AssetEntity>(
       future: _loadAsset(index, album),
-      builder: (_, snapshot) =>
-          snapshot.hasData ? _buildAssetWidget(snapshot.data!, index) : Container(color: Colors.grey[100]),
+      builder: (_, snapshot) => snapshot.hasData
+          ? _buildAssetWidget(snapshot.data!, index)
+          : Container(color: Colors.grey[100]),
     );
   }
 

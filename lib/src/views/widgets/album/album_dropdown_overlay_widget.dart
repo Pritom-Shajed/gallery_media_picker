@@ -90,12 +90,10 @@ class _AlbumDropdownOverlay extends StatelessWidget {
                                 width: double.infinity,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(8),
-                                  color:
-                                      isSelected
-                                          ? provider
-                                              .paramsModel
-                                              .selectedAlbumBgColor
-                                          : Colors.transparent,
+                                  color: isSelected
+                                      ? provider
+                                          .paramsModel.selectedAlbumBgColor
+                                      : Colors.transparent,
                                 ),
                                 padding: const EdgeInsets.symmetric(
                                   horizontal: 16,
@@ -110,14 +108,11 @@ class _AlbumDropdownOverlay extends StatelessWidget {
                                         textAlign: TextAlign.start,
                                         overflow: TextOverflow.ellipsis,
                                         style: TextStyle(
-                                          color:
-                                              isSelected
-                                                  ? provider
-                                                      .paramsModel
-                                                      .selectedAlbumTextColor
-                                                  : provider
-                                                      .paramsModel
-                                                      .albumTextColor,
+                                          color: isSelected
+                                              ? provider.paramsModel
+                                                  .selectedAlbumTextColor
+                                              : provider
+                                                  .paramsModel.albumTextColor,
                                         ),
                                       ),
                                     ),
@@ -129,10 +124,8 @@ class _AlbumDropdownOverlay extends StatelessWidget {
                                       Icon(
                                         provider.paramsModel.selectedAlbumIcon,
                                         size: 15,
-                                        color:
-                                            provider
-                                                .paramsModel
-                                                .selectedAlbumTextColor,
+                                        color: provider
+                                            .paramsModel.selectedAlbumTextColor,
                                       ),
                                   ],
                                 ),

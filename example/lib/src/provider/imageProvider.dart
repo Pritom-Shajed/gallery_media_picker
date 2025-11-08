@@ -1,11 +1,10 @@
 import 'package:flutter/foundation.dart';
-import 'package:gallery_media_picker/gallery_media_picker.dart';
+import 'package:gallery_media_picker_plus/gallery_media_picker.dart';
 
 class PickerDataProvider extends ChangeNotifier {
   final List<PickedAssetModel> _pickedFiles = [];
 
-  final ValueNotifier<List<PickedAssetModel>> pickedFileNotifier =
-      ValueNotifier([]);
+  final ValueNotifier<List<PickedAssetModel>> pickedFileNotifier = ValueNotifier([]);
 
   List<PickedAssetModel> get pickedFiles => List.unmodifiable(_pickedFiles);
 

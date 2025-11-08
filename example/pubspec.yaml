@@ -14,7 +14,7 @@ dependencies:
   photo_view: ^0.15.0
   share_plus: ^11.0.0
   video_player: ^2.10.0
-  gallery_media_picker:
+  gallery_media_picker_plus:
     path: ../
 
 dev_dependencies:

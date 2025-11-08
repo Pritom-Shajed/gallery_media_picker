@@ -2,7 +2,7 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui';
 
-import 'package:gallery_media_picker/gallery_media_picker.dart';
+import 'package:gallery_media_picker_plus/gallery_media_picker.dart';
 import 'package:photo_manager/photo_manager.dart';
 
 /// A model representing a selected media asset (image or video) with
@@ -91,10 +91,9 @@ class PickedAssetModel {
   static Future<PickedAssetModel> fromAssetEntity(AssetEntity entity) async {
     final file = await entity.file;
     final thumbnail = await entity.thumbnailData;
-    final type =
-        entity.type == AssetType.video
-            ? PickedAssetType.video
-            : PickedAssetType.image;
+    final type = entity.type == AssetType.video
+        ? PickedAssetType.video
+        : PickedAssetType.image;
 
     return PickedAssetModel(
       file: file,

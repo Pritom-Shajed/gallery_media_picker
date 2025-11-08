@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gallery_media_picker/gallery_media_picker.dart';
+import 'package:gallery_media_picker_plus/gallery_media_picker.dart';
 
 /// A configuration model for customizing the behavior and appearance
 /// of the `GalleryMediaPicker` widget.

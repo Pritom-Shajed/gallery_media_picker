@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:collection';
 
 import 'package:flutter/foundation.dart';
-import 'package:gallery_media_picker/gallery_media_picker.dart';
+import 'package:gallery_media_picker_plus/gallery_media_picker.dart';
 import 'package:photo_manager/photo_manager.dart';
 
 /// Controller that manages the state and logic for media selection.
@@ -20,7 +20,8 @@ class MediaPickerController extends ChangeNotifier {
   }
 
   /// The singleton instance of this controller.
-  static final MediaPickerController instance = MediaPickerController._internal();
+  static final MediaPickerController instance =
+      MediaPickerController._internal();
 
   // ================================
   // Notifiers and State
@@ -36,13 +37,16 @@ class MediaPickerController extends ChangeNotifier {
   final ValueNotifier<bool> singlePickMode = ValueNotifier<bool>(false);
 
   /// Currently selected raw assets.
-  final ValueNotifier<List<AssetEntity>> picked = ValueNotifier<List<AssetEntity>>([]);
+  final ValueNotifier<List<AssetEntity>> picked =
+      ValueNotifier<List<AssetEntity>>([]);
 
   /// Currently selected parsed asset models.
-  final ValueNotifier<List<PickedAssetModel>> pickedFile = ValueNotifier<List<PickedAssetModel>>([]);
+  final ValueNotifier<List<PickedAssetModel>> pickedFile =
+      ValueNotifier<List<PickedAssetModel>>([]);
 
   /// Currently selected album.
-  final ValueNotifier<AssetPathEntity?> currentAlbum = ValueNotifier<AssetPathEntity?>(null);
+  final ValueNotifier<AssetPathEntity?> currentAlbum =
+      ValueNotifier<AssetPathEntity?>(null);
 
   /// Number of assets in the current album.
   final ValueNotifier<int> assetCount = ValueNotifier<int>(0);
@@ -66,10 +70,12 @@ class MediaPickerController extends ChangeNotifier {
   // ================================
 
   /// Unmodifiable view of selected asset entities.
-  UnmodifiableListView<AssetEntity> get pickedAssets => UnmodifiableListView(picked.value);
+  UnmodifiableListView<AssetEntity> get pickedAssets =>
+      UnmodifiableListView(picked.value);
 
   /// Unmodifiable view of selected parsed files.
-  UnmodifiableListView<PickedAssetModel> get pickedFiles => UnmodifiableListView(pickedFile.value);
+  UnmodifiableListView<PickedAssetModel> get pickedFiles =>
+      UnmodifiableListView(pickedFile.value);
 
   /// Whether the picker is in single selection mode.
   bool get isSinglePick => singlePickMode.value;

@@ -120,13 +120,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  gallery_media_picker:
+  gallery_media_picker_plus:
     dependency: "direct main"
     description:
       path: ".."
       relative: true
     source: path
-    version: "0.2.0"
+    version: "1.0.2"
   html:
     dependency: transitive
     description:

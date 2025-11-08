@@ -1,8 +1,9 @@
-name: gallery_media_picker
-description: "A fully customizable and modern Flutter media picker inspired by Instagram.
-Supports image/video selection, multi-pick, album browsing, and high-performance grid previews using the photo_manager library."
-version: 0.2.0
-homepage: "https://github.com/camilo1498/gallery_media_picker"
+name: gallery_media_picker_plus
+description: "A modern, customizable Flutter media picker for images and videos with multi-pick and album browsing."
+version: 1.0.0
+homepage: https://github.com/Pritom-Shajed/gallery_media_picker
+repository: https://github.com/Pritom-Shajed/gallery_media_picker
+issue_tracker: https://github.com/Pritom-Shajed/gallery_media_picker/issues
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
@@ -19,3 +20,5 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   very_good_analysis: ^8.0.0
+
+example: example/
