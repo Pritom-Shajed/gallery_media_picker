@@ -20,12 +20,14 @@ class MediaPickerController extends ChangeNotifier {
   }
 
   /// The singleton instance of this controller.
-  static final MediaPickerController instance =
-      MediaPickerController._internal();
+  static final MediaPickerController instance = MediaPickerController._internal();
 
   // ================================
   // Notifiers and State
   // ================================
+
+  /// Whether the picker is currently loading albums or media assets.
+  final ValueNotifier<bool> isLoading = ValueNotifier<bool>(false);
 
   /// Maximum number of items allowed to pick.
   final ValueNotifier<int> max = ValueNotifier<int>(0);
@@ -34,16 +36,13 @@ class MediaPickerController extends ChangeNotifier {
   final ValueNotifier<bool> singlePickMode = ValueNotifier<bool>(false);
 
   /// Currently selected raw assets.
-  final ValueNotifier<List<AssetEntity>> picked =
-      ValueNotifier<List<AssetEntity>>([]);
+  final ValueNotifier<List<AssetEntity>> picked = ValueNotifier<List<AssetEntity>>([]);
 
   /// Currently selected parsed asset models.
-  final ValueNotifier<List<PickedAssetModel>> pickedFile =
-      ValueNotifier<List<PickedAssetModel>>([]);
+  final ValueNotifier<List<PickedAssetModel>> pickedFile = ValueNotifier<List<PickedAssetModel>>([]);
 
   /// Currently selected album.
-  final ValueNotifier<AssetPathEntity?> currentAlbum =
-      ValueNotifier<AssetPathEntity?>(null);
+  final ValueNotifier<AssetPathEntity?> currentAlbum = ValueNotifier<AssetPathEntity?>(null);
 
   /// Number of assets in the current album.
   final ValueNotifier<int> assetCount = ValueNotifier<int>(0);
@@ -67,12 +66,10 @@ class MediaPickerController extends ChangeNotifier {
   // ================================
 
   /// Unmodifiable view of selected asset entities.
-  UnmodifiableListView<AssetEntity> get pickedAssets =>
-      UnmodifiableListView(picked.value);
+  UnmodifiableListView<AssetEntity> get pickedAssets => UnmodifiableListView(picked.value);
 
   /// Unmodifiable view of selected parsed files.
-  UnmodifiableListView<PickedAssetModel> get pickedFiles =>
-      UnmodifiableListView(pickedFile.value);
+  UnmodifiableListView<PickedAssetModel> get pickedFiles => UnmodifiableListView(pickedFile.value);
 
   /// Whether the picker is in single selection mode.
   bool get isSinglePick => singlePickMode.value;
@@ -117,7 +114,6 @@ class MediaPickerController extends ChangeNotifier {
     final current = List<AssetEntity>.from(picked.value);
 
     if (singlePick) {
-      if (current.length == 1 && current[0] == entity) return;
       current
         ..clear()
         ..add(entity);

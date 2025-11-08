@@ -32,11 +32,13 @@ class MediaPickerParamsModel {
     this.selectedAlbumBgColor = Colors.white,
     this.selectedAssetBgColor = Colors.white,
     this.albumDropDownBgColor = Colors.black,
+    this.emptyAssetText,
     this.mediaType = GalleryMediaType.all,
     this.selectedAlbumTextColor = Colors.white,
     this.selectedCheckBgColor = Colors.transparent,
     this.thumbnailQuality = ThumbnailQuality.medium,
     this.gridViewPhysics = const BouncingScrollPhysics(),
+    this.loadingIndicatorWidget,
   });
 
   /// Whether only a single item can be picked.
@@ -90,6 +92,9 @@ class MediaPickerParamsModel {
   /// Background color of the album dropdown panel.
   final Color albumDropDownBgColor;
 
+  // Text displayed when there are no assets in the current album.
+  final Widget? emptyAssetText;
+
   /// Icon displayed in the app bar when an album is selected.
   final IconData selectedAlbumIcon;
 
@@ -110,6 +115,9 @@ class MediaPickerParamsModel {
 
   /// Scroll controller used to manage grid view scroll behavior.
   final ScrollController? gridViewController;
+
+  /// Custom widget displayed while the media picker is loading content.
+  final Widget? loadingIndicatorWidget;
 
   @override
   bool operator ==(Object other) {
@@ -139,34 +147,38 @@ class MediaPickerParamsModel {
         other.albumDropDownBgColor == albumDropDownBgColor &&
         other.selectedAssetBgColor == selectedAssetBgColor &&
         other.selectedCheckBgColor == selectedCheckBgColor &&
-        other.selectedAlbumTextColor == selectedAlbumTextColor;
+        other.selectedAlbumTextColor == selectedAlbumTextColor &&
+        other.loadingIndicatorWidget == loadingIndicatorWidget &&
+        other.emptyAssetText == emptyAssetText;
   }
 
   @override
   int get hashCode => Object.hashAll([
-    mediaType,
-    singlePick,
-    appBarColor,
-    gridPadding,
-    appBarHeight,
-    maxPickImages,
-    crossAxisCount,
-    albumTextColor,
-    gridViewPhysics,
-    thumbnailBoxFix,
-    gridViewBgColor,
-    thumbnailBgColor,
-    thumbnailQuality,
-    childAspectRatio,
-    selectedAlbumIcon,
-    gridViewController,
-    selectedCheckColor,
-    selectedAlbumBgColor,
-    albumDropDownBgColor,
-    albumSelectTextColor,
-    selectedAssetBgColor,
-    albumSelectIconColor,
-    selectedCheckBgColor,
-    selectedAlbumTextColor,
-  ]);
+        mediaType,
+        singlePick,
+        appBarColor,
+        gridPadding,
+        appBarHeight,
+        maxPickImages,
+        crossAxisCount,
+        albumTextColor,
+        gridViewPhysics,
+        thumbnailBoxFix,
+        gridViewBgColor,
+        thumbnailBgColor,
+        thumbnailQuality,
+        childAspectRatio,
+        selectedAlbumIcon,
+        gridViewController,
+        selectedCheckColor,
+        selectedAlbumBgColor,
+        albumDropDownBgColor,
+        albumSelectTextColor,
+        selectedAssetBgColor,
+        albumSelectIconColor,
+        selectedCheckBgColor,
+        selectedAlbumTextColor,
+        loadingIndicatorWidget,
+        emptyAssetText,
+      ]);
 }

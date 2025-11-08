@@ -67,8 +67,12 @@ class _GalleryMediaPickerState extends State<GalleryMediaPicker> {
 
   // Initializes the picker by requesting permissions and loading album data.
   Future<void> _initPicker() async {
+    provider.isLoading.value = true;
     final result = await PhotoManager.requestPermissionExtend();
-    if (!result.isAuth) return;
+    if (!result.isAuth) {
+      provider.isLoading.value = false;
+      return;
+    }
 
     final paths = await PhotoManager.getAssetPathList(
       type: provider.paramsModel.mediaType.type,
@@ -83,6 +87,8 @@ class _GalleryMediaPickerState extends State<GalleryMediaPicker> {
         ),
       ),
     );
+
+    provider.isLoading.value = false;
 
     if (paths.isNotEmpty) {
       provider.resetPathList(paths);
@@ -144,36 +150,36 @@ class _GalleryMediaPickerState extends State<GalleryMediaPicker> {
 
   @override
   void dispose() {
+    provider.picked.value = [];
+    provider.pickedFile.value = [];
     _stopGalleryObserver();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return OKToast(
-      child: Column(
-        children: [
-          // Album selection bar (dropdown)
-          _AlbumSelector(appBarLeadingWidget: widget.appBarLeadingWidget),
-          const SizedBox(height: 2),
+    return Column(
+      children: [
+        // Album selection bar (dropdown)
+        _AlbumSelector(appBarLeadingWidget: widget.appBarLeadingWidget),
+        const SizedBox(height: 2),
 
-          // Grid displaying the media thumbnails
-          Expanded(
-            child: RepaintBoundary(
-              child: NotificationListener<OverscrollIndicatorNotification>(
-                onNotification: (overscroll) {
-                  overscroll.disallowIndicator();
-                  return false;
-                },
-                child: ValueListenableBuilder<AssetPathEntity?>(
-                  valueListenable: provider.currentAlbum,
-                  builder: (_, album, __) => const _GalleryGridViewWidget(),
-                ),
+        // Grid displaying the media thumbnails
+        Expanded(
+          child: RepaintBoundary(
+            child: NotificationListener<OverscrollIndicatorNotification>(
+              onNotification: (overscroll) {
+                overscroll.disallowIndicator();
+                return false;
+              },
+              child: ValueListenableBuilder<AssetPathEntity?>(
+                valueListenable: provider.currentAlbum,
+                builder: (_, album, __) => const _GalleryGridViewWidget(),
               ),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

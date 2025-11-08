@@ -30,8 +30,7 @@ class _GalleryGridViewWidgetState extends State<_GalleryGridViewWidget> {
   void initState() {
     super.initState();
 
-    _scrollController =
-        provider.paramsModel.gridViewController ?? ScrollController();
+    _scrollController = provider.paramsModel.gridViewController ?? ScrollController();
 
     // Attach scroll listener to trigger preloading when nearing the bottom.
     _scrollController
@@ -91,9 +90,7 @@ class _GalleryGridViewWidgetState extends State<_GalleryGridViewWidget> {
 
   // Preloads a range of assets from [start] to [end] (exclusive).
   Future<void> _preloadAssets(int start, int end) async {
-    if (_isLoading ||
-        provider.album == null ||
-        start >= provider.assetCount.value) {
+    if (_isLoading || provider.album == null || start >= provider.assetCount.value) {
       return;
     }
     _isLoading = true;
@@ -112,31 +109,39 @@ class _GalleryGridViewWidgetState extends State<_GalleryGridViewWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder<AssetPathEntity?>(
-      valueListenable: provider.currentAlbum,
-      builder: (_, album, __) {
-        if (album == null) {
-          return const Center(child: CircularProgressIndicator());
-        }
-        if (provider.assetCount.value == 0) {
-          return const Center(child: Text('No media found.'));
-        }
+    return ColoredBox(
+      color: provider.paramsModel.gridViewBgColor,
+      child: ValueListenableBuilder<bool>(
+          valueListenable: provider.isLoading,
+          builder: (_, isLoading, __) {
+            if (isLoading) {
+              if (provider.paramsModel.loadingIndicatorWidget != null) {
+                return Center(child: provider.paramsModel.loadingIndicatorWidget);
+              }
+              return const Center(child: CircularProgressIndicator());
+            }
 
-        // Build a scrollable grid of media thumbnails.
-        return Container(
-          decoration: BoxDecoration(
-            color: provider.paramsModel.gridViewBgColor,
-          ),
-          child: GridView.builder(
-            controller: _scrollController,
-            itemCount: provider.assetCount.value,
-            padding: provider.paramsModel.gridPadding,
-            physics: provider.paramsModel.gridViewPhysics,
-            gridDelegate: _buildGridDelegate(),
-            itemBuilder: (_, index) => _buildGridItem(index, album),
-          ),
-        );
-      },
+            return ValueListenableBuilder<AssetPathEntity?>(
+              valueListenable: provider.currentAlbum,
+              builder: (_, album, __) {
+                if (album == null || provider.assetCount.value == 0) {
+                  return Center(
+                      child: provider.paramsModel.emptyAssetText ??
+                          const Text('No media found.', style: TextStyle(fontSize: 14, color: Colors.white)));
+                }
+
+                // Build a scrollable grid of media thumbnails.
+                return GridView.builder(
+                  controller: _scrollController,
+                  itemCount: provider.assetCount.value,
+                  padding: provider.paramsModel.gridPadding,
+                  physics: provider.paramsModel.gridViewPhysics,
+                  gridDelegate: _buildGridDelegate(),
+                  itemBuilder: (_, index) => _buildGridItem(index, album),
+                );
+              },
+            );
+          }),
     );
   }
 
@@ -159,9 +164,8 @@ class _GalleryGridViewWidgetState extends State<_GalleryGridViewWidget> {
     // Fallback to async load if not already cached.
     return FutureBuilder<AssetEntity>(
       future: _loadAsset(index, album),
-      builder: (_, snapshot) => snapshot.hasData
-          ? _buildAssetWidget(snapshot.data!, index)
-          : Container(color: Colors.grey[100]),
+      builder: (_, snapshot) =>
+          snapshot.hasData ? _buildAssetWidget(snapshot.data!, index) : Container(color: Colors.grey[100]),
     );
   }
 
