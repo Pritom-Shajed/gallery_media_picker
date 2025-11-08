@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:gallery_media_picker_plus/gallery_media_picker.dart';
+import 'package:gallery_media_picker_plus/gallery_media_picker_plus.dart';
 
 class PickerDataProvider extends ChangeNotifier {
   final List<PickedAssetModel> _pickedFiles = [];

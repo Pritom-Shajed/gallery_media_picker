@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:collection';
 
 import 'package:flutter/foundation.dart';
-import 'package:gallery_media_picker_plus/gallery_media_picker.dart';
+import 'package:gallery_media_picker_plus/gallery_media_picker_plus.dart';
 import 'package:photo_manager/photo_manager.dart';
 
 /// Controller that manages the state and logic for media selection.

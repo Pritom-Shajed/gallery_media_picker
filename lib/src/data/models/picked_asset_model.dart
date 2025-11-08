@@ -2,7 +2,7 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui';
 
-import 'package:gallery_media_picker_plus/gallery_media_picker.dart';
+import 'package:gallery_media_picker_plus/gallery_media_picker_plus.dart';
 import 'package:photo_manager/photo_manager.dart';
 
 /// A model representing a selected media asset (image or video) with

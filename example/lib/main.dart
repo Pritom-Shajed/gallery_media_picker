@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:example/src/provider/imageProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:gallery_media_picker_plus/gallery_media_picker.dart';
+import 'package:gallery_media_picker_plus/gallery_media_picker_plus.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
@@ -12,9 +12,19 @@ import 'package:video_player/video_player.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   Provider.debugCheckInvalidValueType = null;
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(statusBarColor: Colors.black));
-  runApp(MultiProvider(providers: [ChangeNotifierProvider(create: (_) => PickerDataProvider())], child: MyApp()));
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(statusBarColor: Colors.black),
+  );
+  runApp(
+    MultiProvider(
+      providers: [ChangeNotifierProvider(create: (_) => PickerDataProvider())],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -22,7 +32,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: 'Flutter Demo', theme: ThemeData(primarySwatch: Colors.blue), home: Example());
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: Example(),
+    );
   }
 }
 
@@ -48,7 +62,10 @@ class _ExampleState extends State<Example> {
                 Container(
                   height: 300,
                   color: Colors.black,
-                  child: media.pickedFiles.isEmpty ? _buildEmptyState() : _buildMediaPreview(media.pickedFiles),
+                  child:
+                      media.pickedFiles.isEmpty
+                          ? _buildEmptyState()
+                          : _buildMediaPreview(media.pickedFiles),
                 ),
                 Expanded(
                   child: GalleryMediaPicker(
@@ -100,11 +117,18 @@ class _ExampleState extends State<Example> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Transform.scale(scale: 8, child: Icon(Icons.image_outlined, color: Colors.white, size: 10)),
+          Transform.scale(
+            scale: 8,
+            child: Icon(Icons.image_outlined, color: Colors.white, size: 10),
+          ),
           const SizedBox(height: 50),
           const Text(
             'No images selected',
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Colors.white70),
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w600,
+              color: Colors.white70,
+            ),
           ),
         ],
       ),
@@ -138,7 +162,11 @@ class _ExampleState extends State<Example> {
         padding: const EdgeInsets.only(right: 15, bottom: 12),
         child: Row(
           mainAxisSize: MainAxisSize.min,
-          children: [_buildToggleSelectionButton(), const SizedBox(width: 10), _buildShareButton()],
+          children: [
+            _buildToggleSelectionButton(),
+            const SizedBox(width: 10),
+            _buildShareButton(),
+          ],
         ),
       ),
     );
@@ -163,13 +191,19 @@ class _ExampleState extends State<Example> {
           children: [
             const Text(
               'Select multiple',
-              style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 10),
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w500,
+                fontSize: 10,
+              ),
             ),
             const SizedBox(width: 7),
             Transform.scale(
               scale: 1.5,
               child: Icon(
-                _singlePick ? Icons.check_box_outline_blank : Icons.check_box_outlined,
+                _singlePick
+                    ? Icons.check_box_outline_blank
+                    : Icons.check_box_outlined,
                 color: Colors.blue,
                 size: 10,
               ),
@@ -199,7 +233,14 @@ class _ExampleState extends State<Example> {
               borderRadius: BorderRadius.circular(10),
               border: Border.all(color: Colors.blue, width: 1.5),
             ),
-            child: Transform.scale(scale: 2, child: const Icon(Icons.share_outlined, color: Colors.blue, size: 10)),
+            child: Transform.scale(
+              scale: 2,
+              child: const Icon(
+                Icons.share_outlined,
+                color: Colors.blue,
+                size: 10,
+              ),
+            ),
           ),
         );
       },
