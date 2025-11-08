@@ -9,7 +9,7 @@
 
 A powerful and customizable Flutter package for selecting images and videos from the device gallery with an Instagram style interface and fast thumbnail rendering. Built on top of photo_manager, this package delivers smooth performance, flexible UI customization, and a clean user experience.
 
-This work is an improved fork of the original [`gallery_media_picker`](https://pub.dev/packages/gallery_media_picker) created by Camilo. Built on top of [`photo_manager`](https://pub.dev/packages/photo_manager).
+This work is an improved fork of the original [`gallery_media_picker`](https://pub.dev/packages/gallery_media_picker). Built on top of [`photo_manager`](https://pub.dev/packages/photo_manager).
 The Plus version adds bug fixes, quality improvements, usability enhancements, and more flexible control.
 
 ---
