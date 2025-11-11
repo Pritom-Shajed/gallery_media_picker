@@ -88,12 +88,10 @@ class PickedAssetModel {
   ///
   /// This method extracts all relevant metadata and media file
   /// information to construct a complete instance of [PickedAssetModel].
-  static Future<PickedAssetModel> fromAssetEntity(AssetEntity entity) async {
+  static Future<PickedAssetModel> fromAssetEntity({required AssetEntity entity, bool fetchThumbnail = true}) async {
     final file = await entity.file;
-    final thumbnail = await entity.thumbnailData;
-    final type = entity.type == AssetType.video
-        ? PickedAssetType.video
-        : PickedAssetType.image;
+    final thumbnail = fetchThumbnail ? await entity.thumbnailData : null;
+    final type = entity.type == AssetType.video ? PickedAssetType.video : PickedAssetType.image;
 
     return PickedAssetModel(
       file: file,

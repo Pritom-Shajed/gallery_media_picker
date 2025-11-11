@@ -173,6 +173,7 @@ Each parameter lets you fine-tune the look and feel of the media picker.
 | `gridViewPhysics`        | Scroll behavior                              | `ScrollPhysics`    | `BouncingScrollPhysics()`    |
 | `maxPickImages`          | Max number of assets to select               | `int`              | `5`                          |
 | `singlePick`             | Whether only one image can be picked         | `bool`             | `false`                      |
+| `fetchThumbnail`         | Whether thumbnails should be fetched         | `bool`             | `true`                       |
 | `mediaType`              | Type of media to display (all/images/videos) | `GalleryMediaType` | `GalleryMediaType.all`       |
 | `loadingIndicatorWidget` | Custom widget to show while media is loading | `Widget`           | `CircularProgressIndicator()`|
 | `emptyAssetText`         | Widget displayed when an album has no media  | `Widget`           | `Text('No media found')`     |

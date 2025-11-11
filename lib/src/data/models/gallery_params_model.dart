@@ -15,6 +15,7 @@ class MediaPickerParamsModel {
   const MediaPickerParamsModel({
     this.gridPadding,
     this.singlePick = true,
+    this.fetchThumbnail = true,
     this.maxPickImages = 2,
     this.appBarHeight = 50,
     this.gridViewController,
@@ -46,6 +47,9 @@ class MediaPickerParamsModel {
 
   /// The maximum number of items allowed to be picked.
   final int maxPickImages;
+
+  /// Whether thumbnails should be fetched for the media items.
+  final bool fetchThumbnail;
 
   /// The color of the app bar background.
   final Color appBarColor;

@@ -1,6 +1,6 @@
 name: gallery_media_picker_plus
 description: "A modern, customizable Flutter media picker for images and videos with multi-pick and album browsing."
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/Pritom-Shajed/gallery_media_picker
 repository: https://github.com/Pritom-Shajed/gallery_media_picker
 issue_tracker: https://github.com/Pritom-Shajed/gallery_media_picker/issues
